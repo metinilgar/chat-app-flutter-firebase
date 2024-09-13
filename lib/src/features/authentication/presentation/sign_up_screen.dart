@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -59,7 +60,7 @@ class SignUpScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => context.go('/signIn'),
                       style: TextButton.styleFrom(
                         minimumSize: const Size(0, 0),
                         padding: const EdgeInsets.all(0),
