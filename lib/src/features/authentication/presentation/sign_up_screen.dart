@@ -16,7 +16,9 @@ class SignUpScreen extends StatelessWidget {
                 // Text for sign up
                 Text(
                   "SIGN UP",
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(height: 40),
 

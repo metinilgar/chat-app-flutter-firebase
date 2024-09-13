@@ -16,7 +16,9 @@ class SignInScreen extends StatelessWidget {
                   // Text for sign in
                   Text(
                     "SIGN IN",
-                    style: Theme.of(context).textTheme.headlineLarge,
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(height: 40),
 
