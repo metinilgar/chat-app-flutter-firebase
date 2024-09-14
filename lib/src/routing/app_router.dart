@@ -2,13 +2,21 @@ import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_in_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_up_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/chat_list_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_screen.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_startup.dart';
 import 'package:chat_app_flutter_firebase/src/routing/go_router_refresh_stream.dart';
+import 'package:chat_app_flutter_firebase/src/routing/scaffold_with_nested_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
+
+// private navigators
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'home');
+final _shellNavigatorProfileKey =
+    GlobalKey<NavigatorState>(debugLabel: 'profile');
 
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
@@ -18,6 +26,8 @@ GoRouter goRouter(GoRouterRef ref) {
 
   return GoRouter(
     initialLocation: "/signIn",
+    debugLogDiagnostics: true,
+    navigatorKey: _rootNavigatorKey,
     redirect: (context, state) {
       final path = state.uri.path; // get current path
 
@@ -50,18 +60,52 @@ GoRouter goRouter(GoRouterRef ref) {
 
     // Routes
     routes: [
+      // App startup screen
       GoRoute(
         path: '/startup',
         builder: (context, state) => AppStartupWidget(
           onLoaded: (_) => const SizedBox.shrink(),
         ),
       ),
+
+      // Authentication screens
       GoRoute(
-          path: '/signIn', builder: (context, state) => const SignInScreen()),
+        path: '/signIn',
+        builder: (context, state) => const SignInScreen(),
+      ),
       GoRoute(
-          path: '/signUp', builder: (context, state) => const SignUpScreen()),
-      GoRoute(
-          path: '/home', builder: (context, state) => const ChatListScreen()),
+        path: '/signUp',
+        builder: (context, state) => const SignUpScreen(),
+      ),
+
+      // Nested navigation
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return ScaffoldWithNestedNavigation(
+            navigationShell: navigationShell,
+          );
+        },
+        branches: [
+          StatefulShellBranch(
+            navigatorKey: _shellNavigatorHomeKey,
+            routes: [
+              GoRoute(
+                path: '/home',
+                builder: (context, state) => const ChatListScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _shellNavigatorProfileKey,
+            routes: [
+              GoRoute(
+                path: '/profile',
+                builder: (context, state) => const ProfileScreen(),
+              ),
+            ],
+          ),
+        ],
+      )
     ],
   );
 }
