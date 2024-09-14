@@ -1,5 +1,6 @@
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/elevated_button_theme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/input_decoration_theme.dart';
+import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/text_button_theme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,11 @@ class KAppTheme {
     // Scaffold background color
     scaffoldBackgroundColor: const Color(0xFFFAFAFA),
 
+    // ElevatedButton theme
     elevatedButtonTheme: KElevatedButtonTheme.kLightElevatedButtonTheme,
+
+    // TextButton theme
+    textButtonTheme: KTextButtonTheme.kLightTextButtonTheme,
 
     // Text theme
     textTheme: KTextTheme.kLightTextTheme,
@@ -26,6 +31,9 @@ class KAppTheme {
 
     // ElevatedButton theme
     elevatedButtonTheme: KElevatedButtonTheme.kDarkElevatedButtonTheme,
+
+    // TextButton theme
+    textButtonTheme: KTextButtonTheme.kDarkTextButtonTheme,
 
     // Text theme
     textTheme: KTextTheme.kDarkTextTheme,

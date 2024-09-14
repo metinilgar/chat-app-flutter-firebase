@@ -1,5 +1,6 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/auth_controller.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/validation_controller.dart';
+import 'package:chat_app_flutter_firebase/src/utils/extensions/async_value_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +15,10 @@ class SignInScreen extends ConsumerWidget {
 
     String? email;
     String? password;
+
+    ref.listen<AsyncValue>(authControllerProvider, (_, state) {
+      state.showAlertDialogOnError(context);
+    });
 
     return Scaffold(
       body: Center(

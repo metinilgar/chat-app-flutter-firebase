@@ -26,14 +26,8 @@ class AuthRepository {
         password: password,
       );
       await currentUser!.updateDisplayName(name);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        throw 'The password provided is too weak.';
-      } else if (e.code == 'email-already-in-use') {
-        throw 'The account already exists for that email.';
-      } else {
-        rethrow;
-      }
+    } on FirebaseAuthException {
+      rethrow;
     } catch (e) {
       throw e.toString();
     }
@@ -46,14 +40,8 @@ class AuthRepository {
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw 'No user found for that email.';
-      } else if (e.code == 'wrong-password') {
-        throw 'Wrong password provided for that user.';
-      } else {
-        rethrow;
-      }
+    } on FirebaseAuthException {
+      rethrow;
     } catch (e) {
       throw e.toString();
     }
