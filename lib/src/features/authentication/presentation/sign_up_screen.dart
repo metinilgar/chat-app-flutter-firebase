@@ -1,17 +1,27 @@
+import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
+import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/validation_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends ConsumerWidget {
   const SignUpScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+    final validation = ref.read(validationControllerProvider.notifier);
+    String? email;
+    String? password;
+    String? name;
+
     return Scaffold(
       body: Center(
           child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50),
           child: Form(
+            key: formKey,
             child: Column(
               children: [
                 // Text for sign up
@@ -29,6 +39,8 @@ class SignUpScreen extends StatelessWidget {
                     hintText: 'Name',
                     prefixIcon: Icon(Icons.person_outline),
                   ),
+                  validator: (value) => validation.nameValidation(value),
+                  onSaved: (value) => name = value,
                 ),
                 const SizedBox(height: 20),
 
@@ -38,6 +50,8 @@ class SignUpScreen extends StatelessWidget {
                     hintText: 'Email',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
+                  validator: (value) => validation.emailValidation(value),
+                  onSaved: (value) => email = value,
                 ),
                 const SizedBox(height: 20),
 
@@ -48,6 +62,8 @@ class SignUpScreen extends StatelessWidget {
                     hintText: 'Password',
                     prefixIcon: Icon(Icons.lock_outline),
                   ),
+                  validator: (value) => validation.passwordValidation(value),
+                  onSaved: (value) => password = value,
                 ),
                 const SizedBox(height: 10),
 
@@ -79,7 +95,14 @@ class SignUpScreen extends StatelessWidget {
 
                 // ElevatedButton for sign up
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+
+                      ref.read(authRepositoryProvider).signUp(
+                          email: email!, password: password!, name: name!);
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(180, 50),
                   ),
