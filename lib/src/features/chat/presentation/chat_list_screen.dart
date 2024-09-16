@@ -17,10 +17,7 @@ class ChatListScreen extends ConsumerWidget {
           children: [
             Text(
                 'Welcome, ${ref.read(authRepositoryProvider).currentUser!.displayName}'),
-            ElevatedButton(
-              onPressed: () => ref.read(authRepositoryProvider).signOut(),
-              child: const Text('Sign Out'),
-            ),
+
           ],
         ),
       ),

@@ -47,7 +47,7 @@ GoRouter goRouter(GoRouterRef ref) {
           return "/home";
         }
       } else {
-        if (path.startsWith("/home")) {
+        if (path.startsWith("/home") || path.startsWith("/profile")) {
           return "/signIn";
         }
       }
