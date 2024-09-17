@@ -5,11 +5,13 @@ class MenuItem extends StatelessWidget {
       {super.key,
       required this.icon,
       required this.color,
-      required this.label});
+      required this.label,
+      required this.onTap});
 
   final IconData icon;
   final Color color;
   final String label;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +21,7 @@ class MenuItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         splashColor: Colors.grey.withOpacity(0.1),
         highlightColor: Colors.grey.withOpacity(0.1),
-        onTap: () {
-          // Add navigation logic here
-        },
+        onTap: onTap,
         child: Row(
           children: [
             Container(
@@ -50,7 +50,6 @@ class MenuItem extends StatelessWidget {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Icon(

@@ -2,6 +2,7 @@ import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_in_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_up_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/chat_list_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/manage_user.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_screen.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_startup.dart';
 import 'package:chat_app_flutter_firebase/src/routing/go_router_refresh_stream.dart';
@@ -99,9 +100,15 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _shellNavigatorProfileKey,
             routes: [
               GoRoute(
-                path: '/profile',
-                builder: (context, state) => const ProfileScreen(),
-              ),
+                  path: '/profile',
+                  builder: (context, state) => const ProfileScreen(),
+                  routes: [
+                    GoRoute(
+                      path: "manageUser",
+                      pageBuilder: (context, state) =>
+                          const NoTransitionPage(child: ManageUser()),
+                    ),
+                  ]),
             ],
           ),
         ],

@@ -2,8 +2,10 @@ import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/menu_item.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/menu_list.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_header.dart';
+import 'package:chat_app_flutter_firebase/src/features/settings/dark_mode/presentation/dark_mode_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -36,30 +38,35 @@ class ProfileScreen extends ConsumerWidget {
               ),
 
               // Menu list profile
-              const MenuList(
+              MenuList(
                 title: "Profile",
                 items: [
                   MenuItem(
                     icon: Icons.donut_large,
                     color: Colors.orange,
                     label: "Manage user",
+                    onTap: () => context.go('/profile/manageUser'),
                   ),
                 ],
               ),
 
               // Menu list settings
-              const MenuList(
+              MenuList(
                 title: "Settings",
                 items: [
                   MenuItem(
                     icon: Icons.notifications_outlined,
                     color: Colors.purple,
                     label: "Notifications",
+                    onTap: () {},
                   ),
                   MenuItem(
                     icon: Icons.dark_mode_outlined,
                     color: Colors.lightBlue,
                     label: "Dark Mode",
+                    onTap: () => showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const DarkModeMenu()),
                   ),
                 ],
               ),

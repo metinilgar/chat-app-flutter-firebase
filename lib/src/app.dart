@@ -1,3 +1,4 @@
+import 'package:chat_app_flutter_firebase/src/features/settings/dark_mode/presentation/dark_mode_controller.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_router.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MainApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
 
       // Theme Mode
-      themeMode: ThemeMode.system,
+      themeMode: ref.watch(darkModeControllerProvider),
 
       // Light Theme
       theme: KAppTheme.kLightTheme,
