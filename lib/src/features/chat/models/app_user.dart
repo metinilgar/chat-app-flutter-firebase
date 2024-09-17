@@ -4,24 +4,24 @@ class AppUser {
   AppUser({
     required this.id,
     required this.name,
-    required this.userName,
+    required this.username,
     required this.email,
-    this.photoUrl,
+    required this.photourl,
   });
 
   final String id;
   final String name;
-  final String userName;
+  final String username;
   final String email;
-  final String? photoUrl;
+  final String photourl;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'userName': userName,
+      'username': username,
       'email': email,
-      'photoUrl': photoUrl,
+      'photourl': photourl,
     };
   }
 
@@ -29,9 +29,9 @@ class AppUser {
     return AppUser(
       id: map['id'] as String,
       name: map['name'] as String,
-      userName: map['userName'] as String,
+      username: map['username'] as String,
       email: map['email'] as String,
-      photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : null,
+      photourl: map['photourl'] as String,
     );
   }
 
@@ -39,4 +39,20 @@ class AppUser {
 
   factory AppUser.fromJson(String source) =>
       AppUser.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  AppUser copyWith({
+    String? id,
+    String? name,
+    String? username,
+    String? email,
+    String? photourl,
+  }) {
+    return AppUser(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      photourl: photourl ?? this.photourl,
+    );
+  }
 }

@@ -16,23 +16,26 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 0,
-                blurRadius: 8,
-                offset: const Offset(3, 6),
+        Hero(
+          tag: 'profileAvatar',
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 0,
+                  blurRadius: 8,
+                  offset: const Offset(3, 6),
+                ),
+              ],
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 60,
+              backgroundImage: NetworkImage(
+                imageUrl,
               ),
-            ],
-          ),
-          child: CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 60,
-            backgroundImage: NetworkImage(
-              imageUrl,
             ),
           ),
         ),

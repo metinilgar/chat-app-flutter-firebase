@@ -31,6 +31,11 @@ class KAppTheme {
 
     // Input decoration theme
     inputDecorationTheme: KInputDecorationTheme.kInputDecorationTheme,
+
+    // ListTile theme
+    listTileTheme: const ListTileThemeData(
+      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    ),
   );
 
   static ThemeData kDarkTheme = ThemeData.dark(useMaterial3: true).copyWith(
@@ -54,5 +59,10 @@ class KAppTheme {
 
     // Input decoration theme
     inputDecorationTheme: KInputDecorationTheme.kInputDecorationTheme,
+
+    // ListTile theme
+    listTileTheme: const ListTileThemeData(
+      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    ),
   );
 }

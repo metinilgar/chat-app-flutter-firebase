@@ -32,8 +32,10 @@ class AuthRepository {
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
         'id': userCredential.user!.uid,
         'name': name,
-        'userName': email.split('@').first,
+        'username': email.split('@').first.toLowerCase(),
         'email': email,
+        'photourl':
+            'https://github.com/user-attachments/assets/66b1b7dd-1b25-4772-9096-148cebc21eaf',
       });
 
       await currentUser!.updateDisplayName(name);

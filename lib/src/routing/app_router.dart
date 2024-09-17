@@ -2,6 +2,7 @@ import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_in_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_up_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/home_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/edit_profile.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/manage_user.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_screen.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_startup.dart';
@@ -104,10 +105,14 @@ GoRouter goRouter(GoRouterRef ref) {
                   builder: (context, state) => const ProfileScreen(),
                   routes: [
                     GoRoute(
-                      path: "manageUser",
-                      pageBuilder: (context, state) =>
-                          const NoTransitionPage(child: ManageUser()),
-                    ),
+                        path: "manageUser",
+                        builder: (context, state) => const ManageUser(),
+                        routes: [
+                          GoRoute(
+                            path: "edit",
+                            builder: (context, state) => const EditProfile(),
+                          ),
+                        ]),
                   ]),
             ],
           ),

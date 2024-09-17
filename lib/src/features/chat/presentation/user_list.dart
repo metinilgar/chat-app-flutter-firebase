@@ -37,7 +37,7 @@ class UserList extends ConsumerWidget {
                     ref.read(authRepositoryProvider).currentUser!.uid)
                   UserListItem(
                     name: user.name,
-                    photoUrl: user.photoUrl,
+                    photourl: user.photourl,
                   ),
             ],
           ),

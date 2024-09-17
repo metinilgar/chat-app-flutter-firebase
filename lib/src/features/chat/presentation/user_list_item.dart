@@ -4,11 +4,11 @@ class UserListItem extends StatelessWidget {
   const UserListItem({
     super.key,
     required this.name,
-    required this.photoUrl,
+    required this.photourl,
   });
 
   final String name;
-  final String? photoUrl;
+  final String photourl;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,8 @@ class UserListItem extends StatelessWidget {
       ),
       leading: CircleAvatar(
         radius: 28,
-        backgroundImage: NetworkImage(
-          photoUrl ??
-              "https://github.com/user-attachments/assets/66b1b7dd-1b25-4772-9096-148cebc21eaf",
-        ),
+        backgroundColor: Colors.white,
+        backgroundImage: NetworkImage(photourl),
       ),
       title: Text(name,
           style:
