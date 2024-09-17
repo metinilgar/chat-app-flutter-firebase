@@ -1,12 +1,15 @@
+import 'package:chat_app_flutter_firebase/src/utils/providers/firebase_firestore_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_repository.g.dart';
 
 class AuthRepository {
-  AuthRepository(this._firebaseAuth);
+  AuthRepository(this._firebaseAuth, this._firestore);
 
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
   // Auth state changes
   Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
@@ -21,10 +24,18 @@ class AuthRepository {
     required String name,
   }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      await _firestore.collection('users').doc(userCredential.user!.uid).set({
+        'id': userCredential.user!.uid,
+        'name': name,
+        'userName': email.split('@').first,
+        'email': email,
+      });
+
       await currentUser!.updateDisplayName(name);
     } on FirebaseAuthException {
       rethrow;
@@ -60,5 +71,6 @@ FirebaseAuth firebaseAuth(FirebaseAuthRef ref) {
 
 @riverpod
 AuthRepository authRepository(AuthRepositoryRef ref) {
-  return AuthRepository(ref.watch(firebaseAuthProvider));
+  return AuthRepository(
+      ref.watch(firebaseAuthProvider), ref.watch(firebaseFirestoreProvider));
 }

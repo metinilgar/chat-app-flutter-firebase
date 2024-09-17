@@ -1,7 +1,7 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_in_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_up_screen.dart';
-import 'package:chat_app_flutter_firebase/src/features/chat/presentation/chat_list_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/chat/presentation/home_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/manage_user.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_screen.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_startup.dart';
@@ -92,7 +92,7 @@ GoRouter goRouter(GoRouterRef ref) {
             routes: [
               GoRoute(
                 path: '/home',
-                builder: (context, state) => const ChatListScreen(),
+                builder: (context, state) => const HomeScreen(),
               ),
             ],
           ),
