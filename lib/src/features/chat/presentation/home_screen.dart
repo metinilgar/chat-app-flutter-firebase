@@ -1,4 +1,4 @@
-import 'package:chat_app_flutter_firebase/src/features/chat/presentation/user_list.dart';
+import 'package:chat_app_flutter_firebase/src/features/chat/presentation/widgets/user_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/data/chat_repository.dart';
-import 'package:chat_app_flutter_firebase/src/features/chat/presentation/user_list_item.dart';
+import 'package:chat_app_flutter_firebase/src/features/chat/presentation/widgets/user_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

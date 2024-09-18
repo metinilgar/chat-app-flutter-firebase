@@ -1,8 +1,8 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/menu_item.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/menu_list.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_header.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/user_information_controller.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widgets/menu_item.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widgets/menu_list.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/controllers/user_information_controller.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widgets/profile_header.dart';
 import 'package:chat_app_flutter_firebase/src/features/settings/dark_mode/presentation/dark_mode_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

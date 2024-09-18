@@ -1,10 +1,10 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
-import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_in_screen.dart';
-import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/sign_up_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/screens/sign_in_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/screens/sign_up_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/home_screen.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/edit_profile.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/manage_user.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/profile_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/screens/edit_profile.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/screens/manage_user.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:chat_app_flutter_firebase/src/routing/app_startup.dart';
 import 'package:chat_app_flutter_firebase/src/routing/go_router_refresh_stream.dart';
 import 'package:chat_app_flutter_firebase/src/routing/scaffold_with_nested_navigation.dart';

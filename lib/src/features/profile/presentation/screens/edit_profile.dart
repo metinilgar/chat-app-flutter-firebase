@@ -1,5 +1,5 @@
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/textfield_modal_bottom_sheet.dart';
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/user_information_controller.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widgets/textfield_modal_bottom_sheet.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/controllers/user_information_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

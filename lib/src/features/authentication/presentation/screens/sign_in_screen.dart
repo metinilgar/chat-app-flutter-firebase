@@ -1,5 +1,5 @@
-import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/auth_controller.dart';
-import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/validation_controller.dart';
+import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/controllers/auth_controller.dart';
+import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/controllers/validation_controller.dart';
 import 'package:chat_app_flutter_firebase/src/utils/extensions/async_value_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

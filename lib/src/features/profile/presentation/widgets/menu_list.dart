@@ -1,4 +1,4 @@
-import 'package:chat_app_flutter_firebase/src/features/profile/presentation/menu_item.dart';
+import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
 class MenuList extends StatelessWidget {
