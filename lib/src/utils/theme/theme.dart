@@ -1,5 +1,6 @@
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/app_bar_theme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/bottom_sheet_theme.dart';
+import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/color_scheme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/elevated_button_theme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/input_decoration_theme.dart';
 import 'package:chat_app_flutter_firebase/src/utils/theme/custom_theme/text_button_theme.dart';
@@ -16,6 +17,9 @@ class KAppTheme {
 
     // AppBar theme
     appBarTheme: KAppBarTheme.kLightAppBarTheme,
+
+    // Color scheme
+    colorScheme: KColorScheme.kLightColorScheme,
 
     // BottomSheet theme
     bottomSheetTheme: KBottomSheetTheme.kLightBottomSheetTheme,
@@ -44,6 +48,9 @@ class KAppTheme {
 
     // AppBar theme
     appBarTheme: KAppBarTheme.kDarkAppBarTheme,
+
+    // Color scheme
+    colorScheme: KColorScheme.kDarkColorScheme,
 
     // BottomSheet theme
     bottomSheetTheme: KBottomSheetTheme.kDarkBottomSheetTheme,

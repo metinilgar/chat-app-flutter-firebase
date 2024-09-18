@@ -3,6 +3,7 @@ import 'package:chat_app_flutter_firebase/src/features/chat/data/chat_repository
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/widgets/user_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class UserList extends ConsumerWidget {
   const UserList({super.key});
@@ -38,6 +39,7 @@ class UserList extends ConsumerWidget {
                   UserListItem(
                     name: user.name,
                     photourl: user.photourl,
+                    onTap: () => context.go('/home/chat', extra: user),
                   ),
             ],
           ),

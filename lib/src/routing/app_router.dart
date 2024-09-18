@@ -1,6 +1,8 @@
 import 'package:chat_app_flutter_firebase/src/features/authentication/data/auth_repository.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/screens/sign_in_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/authentication/presentation/screens/sign_up_screen.dart';
+import 'package:chat_app_flutter_firebase/src/features/chat/models/app_user.dart';
+import 'package:chat_app_flutter_firebase/src/features/chat/presentation/chat_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/home_screen.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/screens/edit_profile.dart';
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/screens/manage_user.dart';
@@ -92,9 +94,16 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _shellNavigatorHomeKey,
             routes: [
               GoRoute(
-                path: '/home',
-                builder: (context, state) => const HomeScreen(),
-              ),
+                  path: '/home',
+                  builder: (context, state) => const HomeScreen(),
+                  routes: [
+                    GoRoute(
+                        path: 'chat',
+                        builder: (context, state) {
+                          AppUser user = state.extra as AppUser;
+                          return ChatScreen(receiverUser: user);
+                        }),
+                  ]),
             ],
           ),
           StatefulShellBranch(

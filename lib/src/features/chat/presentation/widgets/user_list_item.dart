@@ -4,11 +4,12 @@ class UserListItem extends StatelessWidget {
   const UserListItem({
     super.key,
     required this.name,
-    required this.photourl,
+    required this.photourl, required this.onTap,
   });
 
   final String name;
   final String photourl;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class UserListItem extends StatelessWidget {
       title: Text(name,
           style:
               Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18)),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }
