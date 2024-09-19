@@ -2,13 +2,72 @@ import 'package:chat_app_flutter_firebase/src/features/profile/presentation/widg
 import 'package:chat_app_flutter_firebase/src/features/profile/presentation/controllers/user_information_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class EditProfile extends ConsumerWidget {
+class EditProfile extends ConsumerStatefulWidget {
   const EditProfile({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final appUser = ref.watch(userInformationControllerProvider).requireValue;
+  ConsumerState<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends ConsumerState<EditProfile> {
+  // Show Image Options
+  Future<void> showImageOptions() async {
+    switch (await showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            children: <Widget>[
+              // Camera Option
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, "camera");
+                },
+                child: const Text('Camera'),
+              ),
+
+              // Gallery Option
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, "gallery");
+                },
+                child: const Text('Gallery'),
+              ),
+            ],
+          );
+        })) {
+      case "camera":
+        getImage(ImageSource.camera);
+        break;
+      case "gallery":
+        getImage(ImageSource.gallery);
+        break;
+      case null:
+        // dialog dismissed ;
+        break;
+    }
+  }
+
+  void getImage(ImageSource source) async {
+    final pickedImage = await ImagePicker()
+        .pickImage(source: source, imageQuality: 50, maxWidth: 200);
+
+    if (pickedImage == null) return;
+
+    ref
+        .read(userInformationControllerProvider.notifier)
+        .uploadProfileImage(pickedImage.path);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final appUserAsyncValue = ref.watch(userInformationControllerProvider);
+    final appUser = appUserAsyncValue.requireValue;
+    final isLoading = appUserAsyncValue.isLoading;
 
     return Scaffold(
         appBar: AppBar(
@@ -24,12 +83,15 @@ class EditProfile extends ConsumerWidget {
                     CircleAvatar(
                       radius: 80,
                       backgroundImage: NetworkImage(appUser.photourl),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child:
+                          isLoading ? const CircularProgressIndicator() : null,
                     ),
                     Positioned(
                       bottom: 0,
                       right: 0,
                       child: IconButton.filled(
-                        onPressed: () {},
+                        onPressed: showImageOptions,
                         icon: const Icon(Icons.camera_alt_outlined, size: 30),
                       ),
                     )

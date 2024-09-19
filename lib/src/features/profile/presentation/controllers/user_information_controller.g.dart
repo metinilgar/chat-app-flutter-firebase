@@ -7,7 +7,7 @@ part of 'user_information_controller.dart';
 // **************************************************************************
 
 String _$userInformationControllerHash() =>
-    r'f3230eb1cdeb918a1e7010d96995c32f924ef45a';
+    r'c36ff19a8f98a9ede71720dbf6e786dd579cfc54';
 
 /// See also [UserInformationController].
 @ProviderFor(UserInformationController)

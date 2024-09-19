@@ -7,7 +7,7 @@ part of 'user_information_repository.dart';
 // **************************************************************************
 
 String _$userInformationRepositoryHash() =>
-    r'68ab904f832997e9df96eb2d4402e0030b18b2cd';
+    r'31d74d2fbfd6c1e95cc0586728217e826f429861';
 
 /// See also [userInformationRepository].
 @ProviderFor(userInformationRepository)

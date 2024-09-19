@@ -46,4 +46,23 @@ class UserInformationController extends _$UserInformationController {
       state = AsyncError(e, StackTrace.current);
     }
   }
+
+  // Upload profile image
+  Future<void> uploadProfileImage(String imageFilePath) async {
+    final currentUser = ref.read(authRepositoryProvider).currentUser;
+
+    state = const AsyncLoading();
+
+    try {
+      final photourl = await ref
+          .read(userInformationRepositoryProvider)
+          .uploadProfileImage(currentUser!.uid, imageFilePath);
+
+      state = AsyncData(
+        state.value!.copyWith(photourl: photourl),
+      );
+    } catch (e) {
+      state = AsyncError(e, StackTrace.current);
+    }
+  }
 }
