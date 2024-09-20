@@ -1,4 +1,5 @@
 import 'package:chat_app_flutter_firebase/src/features/chat/presentation/widgets/user_list.dart';
+import 'package:chat_app_flutter_firebase/src/features/stories/presentation/story_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             // User Stories
-            Placeholder(fallbackHeight: 80),
+            StoryList(),
 
             // User list
             UserList(),
